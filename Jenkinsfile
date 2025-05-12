@@ -2,6 +2,7 @@ pipeline {
     agent any
         environment {
         PATH = "C:\\Program Files\\nodejs;${env.PATH}"
+        SONAR_TOKEN = credentials('ae3e0cd85e60d4e43416a9ebf03d827702acd046')    
     }
     stages {
         stage('Checkout') {
@@ -28,6 +29,12 @@ pipeline {
             steps {
                 bat 'npm audit || exit /B 0'
             }
+        stage('SonarQube Analysis') {
+            steps {
+                // For Windows, using bat to run sonar-scanner, and injecting SONAR_TOKEN securely.
+                bat 'sonar-scanner -Dsonar.login=%ae3e0cd85e60d4e43416a9ebf03d827702acd046%'
+                bat' sonar-scanner-cli-4.8.0.2856-windows\\bin\\sonar-scanner -Dsonar.login=%SONAR_TOKEN%'
+            } 
         }
     }
 }
