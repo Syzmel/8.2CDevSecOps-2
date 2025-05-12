@@ -2,7 +2,7 @@ pipeline {
     agent any
         environment {
         PATH = "C:\\Program Files\\nodejs;${env.PATH}"
-        SONAR_SCANNER_HOME = "${WORKSPACE}\\C:\\Users\\aafra\\bin\\sonar-scanner"     
+        SONAR_SCANNER_HOME = "${C:\\Users\\aafra}\\sonar-scanner-cli-4.8.0.2856-windows"     
         SONAR_TOKEN = credentials('ae3e0cd85e60d4e43416a9ebf03d827702acd046')
     }
     stages {
