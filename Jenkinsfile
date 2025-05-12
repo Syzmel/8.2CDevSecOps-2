@@ -34,7 +34,7 @@ pipeline {
             steps {
                                 bat '''
                   sonar-scanner ^
-                  -Dsonar.projectKey=syzmel ^
+                  -Dsonar.projectKey=8-2cdevsecops-2 ^
                   -Dsonar.organization=8.2CDevSecOps-2 ^
                   -Dsonar.sources=. ^
                   -Dsonar.host.url=https://sonarcloud.io ^
