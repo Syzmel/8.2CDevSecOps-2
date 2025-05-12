@@ -32,7 +32,7 @@ pipeline {
         }
         stage('SonarCloud Analysis') {
             steps {
-                bat 'sonar-scanner-cli-4.8.0.2856-windows\\bin\\sonar-scanner -Dsonar.login=%ae3e0cd85e60d4e43416a9ebf03d827702acd046%'
+                bat 'C:\Users\aafra\\bin\\sonar-scanner -Dsonar.login=%ae3e0cd85e60d4e43416a9ebf03d827702acd046%'
 
             }
         }  
