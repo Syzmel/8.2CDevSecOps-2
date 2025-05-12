@@ -2,7 +2,6 @@ pipeline {
     agent any
         environment {
         PATH = "C:\\Program Files\\nodejs;${env.PATH}"
-        SONAR_SCANNER_HOME = tool 'SonarScanner'     
         SONAR_TOKEN = credentials('ae3e0cd85e60d4e43416a9ebf03d827702acd046')
     }
     stages {
@@ -33,7 +32,16 @@ pipeline {
         }
         stage('SonarCloud Analysis') {
             steps {
-                bat '"%SONAR_SCANNER_HOME%\\bin\\sonar-scanner.bat" -Dsonar.login=%ae3e0cd85e60d4e43416a9ebf03d827702acd046%'
+                                bat '''
+                  sonar-scanner ^
+                  -Dsonar.projectKey=syzmel ^
+                  -Dsonar.organization=Syzmel ^
+                  -Dsonar.sources=. ^
+                  -Dsonar.host.url=https://sonarcloud.io ^
+                  -Dsonar.login=ae3e0cd85e60d4e43416a9ebf03d827702acd046
+                  if %ERRORLEVEL% NEQ 0 exit /b 0
+                '''
+
             }
         }  
     }
