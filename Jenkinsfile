@@ -2,6 +2,7 @@ pipeline {
     agent any
         environment {
         PATH = "C:\\Program Files\\nodejs;${env.PATH}"
+        SONAR_TOKEN = credentials('sonar-token')
     }
     stages {
         stage('Checkout') {
